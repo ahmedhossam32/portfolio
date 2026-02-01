@@ -4,48 +4,37 @@ import {
   Database,
   Layout,
   Smartphone,
-  Wrench
+  Wrench,
 } from "lucide-react";
 
 export default function AboutSkills() {
   return (
-    <section className="relative py-32 px-8 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+    <section className="relative py-20 md:py-32 px-6 md:px-8 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
 
-      {/* background glow */}
-      <div className="absolute inset-0">
+      {/* background glow (desktop only) */}
+      <div className="absolute inset-0 hidden md:block">
         <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[700px] h-[300px] bg-purple-500/10 blur-[160px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto space-y-20">
+      <div className="relative max-w-7xl mx-auto space-y-14 md:space-y-20">
 
-        {/* ================= TITLE ================= */}
-        <div className="text-center space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
+        {/* title */}
+        <div className="text-center space-y-3">
+          <h2 className="text-3xl md:text-5xl font-bold text-white">
             Technologies & Tools
           </h2>
-
-          <p className="text-gray-400 max-w-3xl mx-auto text-lg">
-            A comprehensive overview of the programming languages, frameworks,
-            tools, and platforms I use to design, build, and deploy modern
-            software systems.
+          <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-lg">
+            Languages, frameworks, and tools I use to design and build
+            production-ready systems.
           </p>
         </div>
 
-        {/* ================= GRID ================= */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-
+        {/* grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
           <SkillCard
             title="Programming Languages"
             icon={Code2}
-            items={[
-              "Java",
-              "JavaScript",
-              "TypeScript",
-              "Python",
-              "C++",
-              "Dart",
-              "SQL"
-            ]}
+            items={["Java", "JavaScript", "TypeScript", "Python", "C++", "Dart", "SQL"]}
           />
 
           <SkillCard
@@ -59,7 +48,7 @@ export default function AboutSkills() {
               "OAuth2",
               "REST APIs",
               "Node.js",
-              "Express.js"
+              "Express.js",
             ]}
           />
 
@@ -71,7 +60,7 @@ export default function AboutSkills() {
               "MySQL",
               "MongoDB",
               "Database Design",
-              "Query Optimization"
+              "Query Optimization",
             ]}
           />
 
@@ -83,7 +72,7 @@ export default function AboutSkills() {
               "HTML5",
               "CSS3",
               "Tailwind CSS",
-              "Material UI"
+              "Material UI",
             ]}
           />
 
@@ -94,7 +83,7 @@ export default function AboutSkills() {
               "Flutter",
               "Dart",
               "REST Integration",
-              "JWT Authentication"
+              "JWT Authentication",
             ]}
           />
 
@@ -108,7 +97,7 @@ export default function AboutSkills() {
               "Docker",
               "Postman",
               "Swagger",
-              "GitHub Actions"
+              "GitHub Actions",
             ]}
           />
         </div>
@@ -123,60 +112,37 @@ function SkillCard({ title, icon: Icon, items }) {
   return (
     <div
       className="
-        relative group
-        h-full
-        rounded-3xl
-        p-8
+        relative
+        rounded-2xl md:rounded-3xl
+        p-5 md:p-8
         bg-slate-900/60
         border border-white/10
-        backdrop-blur-xl
-        transition-all duration-500
-        hover:-translate-y-3
-        hover:shadow-[0_25px_80px_-30px_rgba(168,85,247,0.45)]
+        backdrop-blur
+        transition
+        md:hover:-translate-y-2
+        md:hover:shadow-[0_20px_60px_-30px_rgba(168,85,247,0.45)]
       "
     >
-      {/* top gradient line */}
-      <div
-        className="
-          absolute inset-x-0 top-0 h-[2px]
-          bg-gradient-to-r from-purple-500/40 via-blue-500/40 to-transparent
-        "
-      />
-
-      {/* hover glow */}
-      <div
-        className="
-          absolute inset-0 rounded-3xl opacity-0
-          group-hover:opacity-100 transition
-          bg-gradient-to-b from-purple-500/15 to-transparent
-        "
-      />
-
       {/* header */}
-      <div className="relative z-10 flex items-center gap-3 mb-6">
-        <Icon className="w-6 h-6 text-purple-400" />
-        <h3 className="text-xl font-semibold text-white">
+      <div className="flex items-center gap-3 mb-4">
+        <Icon className="w-5 h-5 md:w-6 md:h-6 text-purple-400" />
+        <h3 className="text-lg md:text-xl font-semibold text-white">
           {title}
         </h3>
       </div>
 
       {/* pills */}
-      <div className="relative z-10 flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2">
         {items.map((item) => (
           <span
             key={item}
             className="
-              px-4 py-1.5
+              px-3 py-1
               rounded-full
-              text-sm
+              text-xs md:text-sm
               bg-slate-800/80
               text-gray-300
               border border-white/10
-              transition
-              hover:bg-purple-600/20
-              hover:text-white
-              hover:border-purple-500/40
-              cursor-default
             "
           >
             {item}

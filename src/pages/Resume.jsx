@@ -2,24 +2,23 @@ import { Download } from "lucide-react";
 
 export default function Resume() {
   return (
-    <section className="relative min-h-screen pt-32 pb-40 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+    <section className="relative min-h-screen pt-24 md:pt-32 pb-32 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
 
-      {/* background glow */}
-      <div className="absolute inset-0">
+      {/* background glow (desktop only) */}
+      <div className="absolute inset-0 hidden md:block">
         <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[700px] h-[300px] bg-purple-500/10 blur-[160px]" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-6 space-y-14">
+      <div className="relative max-w-6xl mx-auto px-6 space-y-12">
 
         {/* ================= HEADER ================= */}
         <div className="text-center space-y-5">
-          <h1 className="text-4xl md:text-5xl font-bold text-white">
+          <h1 className="text-3xl md:text-5xl font-bold text-white">
             Resume
           </h1>
 
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Download or view my resume below.  
-            This document highlights my backend development experience,
+          <p className="text-gray-400 text-sm md:text-lg max-w-2xl mx-auto">
+            Download my resume to view my backend development experience,
             technical skills, and academic background.
           </p>
 
@@ -28,7 +27,7 @@ export default function Resume() {
             download
             className="
               inline-flex items-center gap-3
-              px-9 py-3
+              px-7 py-3
               rounded-xl
               bg-gradient-to-r from-purple-600 to-blue-600
               text-white font-semibold
@@ -37,13 +36,13 @@ export default function Resume() {
               shadow-lg shadow-purple-500/30
             "
           >
-            <Download size={20} />
+            <Download size={18} />
             Download Resume
           </a>
         </div>
 
-        {/* ================= PDF VIEWER ================= */}
-        <div className="flex justify-center">
+        {/* ================= DESKTOP PDF VIEWER ================= */}
+        <div className="hidden md:flex justify-center">
 
           <div
             className="
@@ -60,9 +59,6 @@ export default function Resume() {
               height: "1150px",
             }}
           >
-            {/* glass overlay */}
-            <div className="absolute inset-0 bg-white/5 pointer-events-none" />
-
             <iframe
               src="/Ahmed_Hossam_Resume.pdf"
               title="Resume PDF"
@@ -72,21 +68,21 @@ export default function Resume() {
         </div>
 
         {/* ================= MOBILE NOTE ================= */}
-        <div className="text-center text-gray-500 text-sm">
-          For best viewing experience on mobile devices, please download the
-          resume.
-        </div>
+        <p className="md:hidden text-center text-gray-500 text-sm">
+          For the best experience on mobile devices, please download the resume.
+        </p>
       </div>
 
-      {/* ================= FLOATING DOWNLOAD ================= */}
+      {/* ================= MOBILE FLOATING BUTTON ================= */}
       <a
         href="/Ahmed_Hossam_Resume.pdf"
         download
         className="
+          md:hidden
           fixed bottom-6 right-6
           z-50
           flex items-center gap-2
-          px-6 py-3
+          px-5 py-3
           rounded-full
           bg-purple-600
           text-white font-semibold

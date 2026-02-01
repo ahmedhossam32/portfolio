@@ -10,7 +10,7 @@ import {
   Network,
   GitMerge,
   Server,
-  GitBranch
+  GitBranch,
 } from "lucide-react";
 
 export default function AboutFoundation() {
@@ -26,76 +26,55 @@ export default function AboutFoundation() {
     { title: "Networking (HTTP / TCP-IP)", icon: Network },
     { title: "Concurrency & Async Programming", icon: GitMerge },
     { title: "System Design Fundamentals", icon: Server },
-    { title: "Git & Version Control", icon: GitBranch }
+    { title: "Git & Version Control", icon: GitBranch },
   ];
 
   return (
-    <section className="relative py-32 px-8 bg-slate-950 overflow-hidden">
+    <section className="relative py-20 md:py-32 px-6 md:px-8 bg-slate-950 overflow-hidden">
 
-      {/* background glow */}
-      <div className="absolute inset-0">
+      {/* background glow (desktop only) */}
+      <div className="absolute inset-0 hidden md:block">
         <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[700px] h-[300px] bg-purple-500/10 blur-[160px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto space-y-20">
+      <div className="relative max-w-7xl mx-auto space-y-14 md:space-y-20">
 
-        {/* ================= TITLE ================= */}
-        <div className="text-center space-y-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
+        {/* title */}
+        <div className="text-center space-y-3">
+          <h2 className="text-3xl md:text-5xl font-bold text-white">
             Computer Science Foundation
           </h2>
-
-          <p className="text-gray-400 max-w-3xl mx-auto text-lg">
-            Strong understanding of core computer science principles that power
-            scalable, maintainable, and high-performance software systems.
+          <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-lg">
+            Core CS concepts that enable scalable, maintainable, and
+            high-performance software systems.
           </p>
         </div>
 
-        {/* ================= GRID ================= */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
-
+        {/* grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-8">
           {foundations.map(({ title, icon: Icon }) => (
             <div
               key={title}
               className="
-                relative group
-                h-[120px]
-                rounded-3xl
+                relative
+                rounded-xl md:rounded-3xl
+                px-4 py-5 md:p-7
                 bg-slate-900/60
                 border border-white/10
-                backdrop-blur-xl
+                backdrop-blur
                 flex flex-col items-center justify-center
-                transition-all duration-500
-                hover:-translate-y-3
-                hover:shadow-[0_25px_80px_-30px_rgba(168,85,247,0.45)]
+                transition
+                md:hover:-translate-y-2
+                md:hover:shadow-[0_20px_60px_-30px_rgba(168,85,247,0.45)]
               "
             >
-              {/* top gradient line */}
-              <div className="
-                absolute inset-x-0 top-0 h-[2px]
-                bg-gradient-to-r from-purple-500/40 via-blue-500/40 to-transparent
-              " />
-
-              {/* hover glow */}
-              <div
-                className="
-                  absolute inset-0 rounded-3xl opacity-0
-                  group-hover:opacity-100 transition
-                  bg-gradient-to-b from-purple-500/15 to-transparent
-                "
-              />
-
-              {/* icon */}
-              <Icon className="relative z-10 w-7 h-7 text-purple-400 mb-3" />
-
-              {/* text */}
-              <p className="relative z-10 text-gray-200 text-sm md:text-base font-medium text-center px-4">
+              <Icon className="w-5 h-5 md:w-7 md:h-7 text-purple-400 mb-2 md:mb-3" />
+              <p className="text-gray-200 text-xs sm:text-sm md:text-base text-center font-medium">
                 {title}
               </p>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

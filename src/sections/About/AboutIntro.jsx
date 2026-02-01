@@ -3,26 +3,26 @@ import {
   GraduationCap,
   School,
   Calendar,
-  Laptop
+  Laptop,
 } from "lucide-react";
 
 export default function AboutIntro() {
   return (
-    <section className="relative py-36 px-8 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
+    <section className="relative py-20 md:py-36 px-6 md:px-8 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
 
-      {/* background glow */}
-      <div className="absolute inset-0">
+      {/* background glow (desktop only) */}
+      <div className="absolute inset-0 hidden md:block">
         <div className="absolute -left-40 top-20 w-[500px] h-[500px] bg-purple-600/10 blur-[160px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+      <div className="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
 
-        {/* ================= LEFT CONTENT ================= */}
-        <div className="space-y-8">
+        {/* ================= LEFT ================= */}
+        <div className="space-y-6 md:space-y-8">
 
           {/* title */}
-          <div className="space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+          <div className="space-y-3">
+            <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
               Background &{" "}
               <span className="relative text-purple-400">
                 Education
@@ -30,11 +30,11 @@ export default function AboutIntro() {
               </span>
             </h2>
 
-            <div className="w-20 h-[2px] bg-gradient-to-r from-purple-500 to-transparent" />
+            <div className="w-16 h-[2px] bg-gradient-to-r from-purple-500 to-transparent" />
           </div>
 
-          {/* paragraphs */}
-          <p className="text-gray-400 leading-relaxed text-lg max-w-xl">
+          {/* text */}
+          <p className="text-gray-400 text-sm md:text-lg leading-relaxed max-w-xl">
             I am a{" "}
             <span className="text-white font-medium">
               Senior Computer Science student
@@ -47,43 +47,29 @@ export default function AboutIntro() {
             <span className="text-purple-400 font-medium">
               Software Engineering
             </span>
-            . My academic journey has provided me with a strong foundation in
-            core computer science concepts and modern software development
-            practices.
+            .
           </p>
 
-          <p className="text-gray-400 leading-relaxed text-lg max-w-xl">
-            I am particularly interested in{" "}
+          <p className="text-gray-400 text-sm md:text-lg leading-relaxed max-w-xl">
+            My main interest is{" "}
             <span className="text-white font-medium">
               backend engineering
             </span>
-            , where I focus on designing{" "}
+            , where I focus on building{" "}
             <span className="text-purple-400 font-medium">
               scalable systems, clean APIs, and maintainable architectures
             </span>{" "}
             that solve real-world problems.
           </p>
 
-          {/* info grid */}
-          <div className="grid grid-cols-2 gap-6 pt-6">
+          {/* info list */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4">
 
             {[
-              {
-                icon: GraduationCap,
-                text: "Software Engineering",
-              },
-              {
-                icon: School,
-                text: "British University in Egypt",
-              },
-              {
-                icon: Calendar,
-                text: "Graduation: 2026",
-              },
-              {
-                icon: Laptop,
-                text: "Backend & Full-Stack Focus",
-              },
+              { icon: GraduationCap, text: "Software Engineering" },
+              { icon: School, text: "British University in Egypt" },
+              { icon: Calendar, text: "Graduation: 2026" },
+              { icon: Laptop, text: "Backend & Full-Stack Focus" },
             ].map((item, i) => {
               const Icon = item.icon;
 
@@ -91,15 +77,16 @@ export default function AboutIntro() {
                 <div
                   key={i}
                   className="
-                    flex items-center gap-4
-                    p-4 rounded-xl
+                    flex items-center gap-3
+                    px-4 py-3
+                    rounded-lg
                     bg-slate-900/60
                     border border-white/10
                     backdrop-blur
                   "
                 >
-                  <Icon className="w-5 h-5 text-purple-400" />
-                  <span className="text-gray-200 text-sm md:text-base">
+                  <Icon className="w-4 h-4 text-purple-400" />
+                  <span className="text-gray-200 text-sm">
                     {item.text}
                   </span>
                 </div>
@@ -108,30 +95,17 @@ export default function AboutIntro() {
           </div>
         </div>
 
-        {/* ================= RIGHT IMAGE ================= */}
-        <div className="relative flex justify-center group">
+        {/* ================= RIGHT (IMAGE) ================= */}
+        <div className="flex justify-center md:justify-end mt-6 md:mt-0">
 
-          {/* glow */}
-          <div className="absolute w-80 h-80 bg-purple-600/20 blur-3xl rounded-full" />
-
-          {/* glass frame */}
-          <div className="
-            relative
-            p-6
-            rounded-3xl
-            bg-white/5
-            backdrop-blur-xl
-            border border-white/10
-            shadow-2xl
-            transition-all duration-500
-            group-hover:scale-105
-          ">
-            <img
-              src={csIllustration}
-              alt="Computer Science Illustration"
-              className="w-full max-w-md opacity-95"
-            />
-          </div>
+          <img
+            src={csIllustration}
+            alt="Computer Science Illustration"
+            className="
+              w-[220px] sm:w-[260px] md:w-[420px]
+              opacity-90
+            "
+          />
         </div>
       </div>
     </section>

@@ -11,7 +11,6 @@ export default function Projects() {
   const [currentPage, setCurrentPage] = useState(1);
   const [activeFilter, setActiveFilter] = useState("All");
 
-  // ✅ FIXED FILTER LOGIC
   const filteredProjects =
     activeFilter === "All"
       ? projects
@@ -31,23 +30,23 @@ export default function Projects() {
   );
 
   return (
-    <section className="min-h-screen pt-32 px-8 text-white bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+    <section className="min-h-screen pt-24 md:pt-32 px-6 md:px-8 text-white bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
 
       {/* ================= HEADER ================= */}
-      <div className="text-center mb-16 space-y-4">
-        <h1 className="text-4xl md:text-5xl font-bold">
+      <div className="text-center mb-12 md:mb-16 space-y-3 md:space-y-4">
+        <h1 className="text-3xl md:text-5xl font-bold">
           Projects &{" "}
           <span className="text-purple-400">Case Studies</span>
         </h1>
 
-        <p className="text-gray-400 max-w-2xl mx-auto">
-          Selected backend and full-stack projects focused on scalable
-          architecture, clean APIs, and real-world problem solving.
+        <p className="text-gray-400 text-sm md:text-base max-w-2xl mx-auto">
+          Backend and full-stack projects focused on clean architecture,
+          scalable systems, and real-world problem solving.
         </p>
       </div>
 
       {/* ================= FILTERS ================= */}
-      <div className="flex flex-wrap justify-center gap-4 mb-20">
+      <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12 md:mb-20">
         {filters.map((filter) => (
           <button
             key={filter}
@@ -56,7 +55,9 @@ export default function Projects() {
               setCurrentPage(1);
             }}
             className={`
-              px-5 py-2 rounded-full text-sm font-medium
+              px-4 md:px-5 py-1.5 md:py-2
+              rounded-full
+              text-xs md:text-sm font-medium
               border transition
               ${
                 activeFilter === filter
@@ -71,11 +72,17 @@ export default function Projects() {
       </div>
 
       {/* ================= GRID ================= */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-14">
-        {currentProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </div>
+      {currentProjects.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 md:gap-14">
+          {currentProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+      ) : (
+        <div className="text-center text-gray-400 py-20">
+          No projects found for this category.
+        </div>
+      )}
 
       {/* ================= PAGINATION ================= */}
       <Pagination

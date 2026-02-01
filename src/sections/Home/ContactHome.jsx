@@ -31,18 +31,18 @@ export default function ContactHome() {
   return (
     <section
       id="contact"
-      className="relative py-36 px-8 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden"
+      className="relative py-24 md:py-36 px-6 md:px-8 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden"
     >
       {/* background glow */}
       <div className="absolute inset-0">
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[700px] h-[300px] bg-purple-500/10 blur-[160px]" />
+        <div className="hidden md:block absolute left-1/2 top-0 -translate-x-1/2 w-[700px] h-[300px] bg-purple-500/10 blur-[160px]" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto text-center space-y-16">
+      <div className="relative max-w-6xl mx-auto text-center space-y-12 md:space-y-16">
 
-        {/* ================= TITLE ================= */}
-        <div className="space-y-5">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
+        {/* TITLE */}
+        <div className="space-y-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-white">
             Let’s{" "}
             <span className="text-purple-400 relative">
               Connect
@@ -50,14 +50,14 @@ export default function ContactHome() {
             </span>
           </h2>
 
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <p className="text-gray-400 max-w-xl mx-auto text-sm md:text-lg">
             Whether you have an opportunity, a project idea, or just want to say
             hello — feel free to reach out.
           </p>
         </div>
 
-        {/* ================= CONTACT CARDS ================= */}
-        <div className="grid md:grid-cols-3 gap-10">
+        {/* CONTACT CARDS */}
+        <div className="grid gap-6 md:grid-cols-3 md:gap-10">
 
           {contacts.map((item, i) => {
             const Icon = item.icon;
@@ -70,21 +70,22 @@ export default function ContactHome() {
                 rel="noreferrer"
                 className="
                   relative group
-                  rounded-3xl p-8
+                  rounded-2xl md:rounded-3xl
+                  p-4 md:p-8
                   bg-slate-900/60
                   border border-white/10
                   backdrop-blur-xl
-                  transition-all duration-500
-                  hover:-translate-y-3
-                  hover:shadow-[0_25px_80px_-30px_rgba(168,85,247,0.45)]
+                  transition-all duration-300
+                  hover:-translate-y-2
+                  hover:shadow-[0_20px_60px_-30px_rgba(168,85,247,0.4)]
                 "
               >
-                {/* gradient line */}
+                {/* top accent */}
                 <div
                   className={`absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r ${item.glow}`}
                 />
 
-                {/* glow */}
+                {/* hover glow */}
                 <div
                   className={`
                     absolute inset-0 rounded-3xl opacity-0
@@ -94,43 +95,39 @@ export default function ContactHome() {
                 />
 
                 {/* icon */}
-                <div className="
-                  relative z-10
-                  w-16 h-16 mx-auto mb-6
-                  flex items-center justify-center
-                  rounded-2xl
-                  bg-slate-800/80
-                  border border-white/10
-                ">
-                  <Icon size={30} className={item.color} />
+                <div
+                  className="
+                    relative z-10
+                    w-12 h-12 md:w-16 md:h-16
+                    mx-auto mb-4 md:mb-6
+                    flex items-center justify-center
+                    rounded-xl md:rounded-2xl
+                    bg-slate-800/80
+                    border border-white/10
+                  "
+                >
+                  <Icon size={22} className={item.color} />
                 </div>
 
                 {/* text */}
                 <div className="relative z-10 space-y-1">
-                  <p className="text-gray-400 text-sm uppercase tracking-wider">
+                  <p className="text-gray-400 text-xs md:text-sm uppercase tracking-wider">
                     {item.title}
                   </p>
 
-                  <p className="text-white font-medium break-all">
+                  <p className="text-white text-sm md:text-base font-medium break-all">
                     {item.value}
                   </p>
                 </div>
 
-                {/* arrow */}
-                <div className="
-                  absolute top-6 right-6
-                  opacity-0
-                  group-hover:opacity-100
-                  transition
-                ">
+                {/* arrow (desktop only) */}
+                <div className="hidden md:block absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition">
                   <ArrowUpRight className="text-gray-400" />
                 </div>
               </a>
             );
           })}
         </div>
-
-  
       </div>
     </section>
   );

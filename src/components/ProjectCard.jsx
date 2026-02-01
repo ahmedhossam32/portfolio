@@ -18,47 +18,42 @@ export default function ProjectCard({ project }) {
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      whileHover={{ y: -10 }}
+      transition={{ duration: 0.4 }}
+      whileHover={{ y: -6 }}
       className="
         relative flex flex-col
         bg-slate-900/70
         backdrop-blur-xl
         border border-white/10
-        rounded-3xl overflow-hidden
-        hover:border-purple-500/40
-        hover:shadow-[0_30px_80px_-30px_rgba(168,85,247,0.55)]
+        rounded-2xl md:rounded-3xl
+        overflow-hidden
         transition-all
+        hover:border-purple-500/40
+        hover:shadow-[0_20px_60px_-30px_rgba(168,85,247,0.45)]
       "
     >
-      {/* ================= DATE ================= */}
-      <span
-        className="
-          absolute top-4 left-4 z-40
-          px-3 py-1 text-xs rounded-full
-          bg-black/80
-          border border-white/20
-          text-gray-200
-          backdrop-blur-md
-        "
-      >
+      {/* DATE */}
+      <span className="
+        absolute top-3 left-3 z-40
+        px-2.5 py-1 text-[11px] rounded-full
+        bg-black/80 border border-white/20
+        text-gray-200
+      ">
         {project.date}
       </span>
 
-      {/* ================= TAGS ================= */}
-      <div className="absolute top-4 right-4 z-40 flex gap-2 flex-wrap justify-end">
+      {/* TAGS */}
+      <div className="absolute top-3 right-3 z-40 flex gap-1.5 flex-wrap justify-end">
         {project.tags?.map((tag) => (
           <span
             key={tag}
             className={`
-              px-3 py-1 text-xs rounded-full
-              bg-black/75
-              border
-              backdrop-blur-md
-              font-medium tracking-wide
+              px-2.5 py-1 text-[11px] rounded-full
+              bg-black/75 border backdrop-blur-md
+              font-medium
               ${badgeStyles[tag]}
             `}
           >
@@ -67,25 +62,19 @@ export default function ProjectCard({ project }) {
         ))}
       </div>
 
-      {/* ================= IMAGE ================= */}
-      <div className="relative h-[260px] overflow-hidden bg-slate-900">
+      {/* IMAGE */}
+      <div className="relative h-[180px] md:h-[260px] overflow-hidden bg-slate-900">
 
-        {/* dark overlay */}
         <div className="absolute inset-0 bg-black/55 z-10" />
-
-        {/* gradient fade */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent z-20" />
 
-        {/* MOBILE */}
         {project.platform === "mobile" ? (
           <div className="absolute inset-0 flex items-center justify-center z-30">
             <motion.img
               src={imageSrc}
               alt={project.title}
               onError={(e) => (e.currentTarget.src = fallbackImage)}
-              className="h-[220px] rounded-[28px] shadow-2xl shadow-purple-500/20"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.5 }}
+              className="h-[150px] md:h-[220px] rounded-[24px] shadow-lg"
             />
           </div>
         ) : (
@@ -94,37 +83,35 @@ export default function ProjectCard({ project }) {
             alt={project.title}
             onError={(e) => (e.currentTarget.src = fallbackImage)}
             className="absolute inset-0 w-full h-full object-contain z-20"
-            whileHover={{ scale: 1.04 }}
-            transition={{ duration: 0.6 }}
           />
         )}
       </div>
 
-      {/* ================= CONTENT ================= */}
-      <div className="flex flex-col flex-1 p-7 relative z-30">
+      {/* CONTENT */}
+      <div className="flex flex-col flex-1 p-4 md:p-7 relative z-30">
 
-        <h3 className="text-xl font-semibold text-white mb-2 tracking-wide">
+        <h3 className="text-base md:text-xl font-semibold text-white mb-1.5">
           {project.title}
         </h3>
 
-        <p className="text-gray-400 text-sm leading-relaxed mb-6">
+        <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-4">
           {project.description}
         </p>
 
-        {/* buttons */}
-        <div className="flex gap-3 mb-6 flex-wrap">
+        {/* BUTTONS */}
+        <div className="flex gap-2 mb-4 flex-wrap">
           <a
             href={project.github}
             target="_blank"
             rel="noreferrer"
             className="
               flex items-center gap-2
-              px-4 py-2 rounded-md
+              px-3 py-2 rounded-md
               bg-purple-600 hover:bg-purple-700
-              transition text-sm
+              transition text-xs md:text-sm
             "
           >
-            <Github size={18} />
+            <Github size={16} />
             GitHub
           </a>
 
@@ -135,25 +122,25 @@ export default function ProjectCard({ project }) {
               rel="noreferrer"
               className="
                 flex items-center gap-2
-                px-4 py-2 rounded-md
+                px-3 py-2 rounded-md
                 border border-white/20
                 hover:bg-white/5
-                transition text-sm
+                transition text-xs md:text-sm
               "
             >
-              <Play size={18} />
+              <Play size={16} />
               Preview
             </a>
           )}
         </div>
 
-        {/* tech stack */}
-        <div className="flex flex-wrap gap-2 mt-auto">
+        {/* TECH STACK */}
+        <div className="flex flex-wrap gap-1.5 mt-auto">
           {project.techs.map((tech, i) => (
             <span
               key={i}
               className="
-                px-3 py-1 text-[11px]
+                px-2.5 py-1 text-[10px] md:text-[11px]
                 rounded-full
                 bg-purple-500/20
                 border border-purple-400/30
